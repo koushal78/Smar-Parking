@@ -1,119 +1,53 @@
+
 # Smart Parking Lot System
 
 This is a full-stack web application that manages a parking lot and automatically allocates parking slots based on vehicle requirements.  
 The system is designed to demonstrate backend logic, filtering and optimization, database usage, and a simple usable UI.
 
----
-
 ## Project Overview
 
-The Smart Parking Lot System acts like a parking manager.  
-It keeps track of all parking slots, their features, and their availability, and decides where a vehicle should be parked.
 
-Each parking slot has:
-- A slot number
-- Whether it is covered or not
-- Whether it supports EV charging or not
-- Whether it is currently occupied
 
-The system ensures that vehicles are parked in the most suitable and nearest available slot.
+### Add Parking Slots
+Users create parking slots by providing the slot number, covered parking option, and EV charging availability.  
+All slots are stored as **available by default**, and duplicate slot numbers are not allowed.
 
----
+### View Parking Slots
+The application displays all parking slots along with their features and current status (Available / Occupied).
 
-## How the Project Works
+### Park a Vehicle
+The system automatically:
+- Filters available slots
+- Matches EV and covered parking requirements
+- Selects the nearest suitable slot
+- Marks it as occupied  
 
-### 1. Adding Parking Slots
-Users can add parking slots by providing:
-- Slot number
-- Covered parking availability
-- EV charging availability
+If no suitable slot is found, a message is returned.
 
-Each slot is stored in the database with its occupied status set to false by default.  
-Duplicate slot numbers are not allowed.
-
----
-
-### 2. Viewing All Parking Slots
-All parking slots are displayed in a list/table showing:
-- Slot number
-- Covered or not
-- EV charging or not
-- Current status (Available or Occupied)
-
-This gives a complete overview of the parking lot at any time.
-
----
-
-### 3. Parking a Vehicle
-When a user wants to park a vehicle, they specify:
-- Whether the vehicle needs EV charging
-- Whether the vehicle needs covered parking
-
-The backend performs the following steps:
-1. Filters all parking slots that are not occupied
-2. Applies the required conditions (EV and/or covered)
-3. Sorts the matching slots by slot number
-4. Selects the nearest slot (lowest slot number)
-5. Marks the selected slot as occupied
-
-If no slot satisfies the requirements, the system returns a message saying that no slot is available.
-
----
-
-### 4. Removing a Vehicle
+### Remove a Vehicle
 Users can remove a vehicle by entering the slot number.  
-The system:
-- Checks if the slot exists
-- Checks if the slot is currently occupied
-- Marks the slot as available again
+The system validates the slot and marks it as available again, showing errors for invalid cases.
 
-Appropriate error messages are shown for invalid cases.
+## Live Link
+Frontend:  
+ https://smar-parking-1.onrender.com/
+## Screensort
 
----
+![Smart Parking UI](https://raw.githubusercontent.com/koushal78/Smar-Parking/main/frontend/public/img1.png)
 
-## Data Model
 
-Each parking slot follows this structure:
 
-```json
-{
-  "slotNo": 1,
-  "isCovered": true,
-  "isEVCharging": false,
-  "isOccupied": false
-}
-```
+## Demo Video
 
----
+[▶️ Click here to watch the demo](https://user-images.githubusercontent.com/XXXX/demo.mp4)
 
-## Commands ✅
+## Environment Variables
 
-Quick commands to run the project:
+To run this project, you will need to add the following environment variables to your .env file
 
-- Install dependencies (root):
-  - `npm install`
-- Install frontend dependencies:
-  - `cd frontend && npm install`
-- Start backend (from project root):
-  - `npm run start`  # uses nodemon to run `backend/index.js`
-- Start frontend dev server (from project root):
-  - `cd frontend && npm run dev`
-- Build frontend for production:
-  - `cd frontend && npm run build`
-- Preview production build:
-  - `cd frontend && npm run preview`
-- Lint frontend:
-  - `cd frontend && npm run lint`
+`MONGODB_URI`=
 
-> Note: Run backend and frontend in separate terminals (one for `npm run start`, another for `npm run dev`).
+`PORT`
 
----
 
-## UI Screenshot 📸
 
-A UI screenshot has been added to the public folder as `frontend/public/img1.png`.
-When the frontend dev server is running (default: http://localhost:5173), you can view it at:
-
-`http://localhost:5173/img1.png`
-
----
