@@ -25,18 +25,23 @@ export const AddParkingSlote = async(req,res)=>{
     });
 
   } catch (error) {
+    console.error("AddParkingSlote error:", error);
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({ message: error.message });
+    }
     res.status(500).json({ message: "Server error" });
   }
-}
+} 
 
 export const viewParking = async(req,res)=>{
     try {
     const slots = await Parking.find().sort({ slotNo: 1 });
     res.json(slots);
   } catch (error) {
+    console.error("viewParking error:", error);
     res.status(500).json({ message: "Server error" });
   }
-}
+} 
 
 export const ParkVehical = async(req,res)=>{
      try {
@@ -61,9 +66,10 @@ export const ParkVehical = async(req,res)=>{
     });
 
   } catch (error) {
+    console.error("ParkVehical error:", error);
     res.status(500).json({ message: "Server error" });
   }
-}
+} 
 
 export const removeVehical = async(req,res)=>{
      try {
@@ -85,6 +91,7 @@ export const removeVehical = async(req,res)=>{
     res.json({ message: `Slot ${slotNo} is now free` });
 
   } catch (error) {
+    console.error("removeVehical error:", error);
     res.status(500).json({ message: "Server error" });
   }
-}
+} 
