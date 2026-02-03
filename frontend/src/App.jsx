@@ -4,7 +4,7 @@ import SlotList from "./components/SlotList";
 import ParkVehicle from "./components/ParkVehicle";
 import RemoveVehicle from "./components/RemoveVehicle";
 
-const API = "http://localhost:5000/api";
+const API = "https://smar-parking.onrender.com/api";
 
 function App() {
   const [slots, setSlots] = useState([]);

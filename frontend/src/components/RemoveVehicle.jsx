@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const API = "http://localhost:5000/api";
+const API = "https://smar-parking.onrender.com/api";
 
 export default function RemoveVehicle({ fetchSlots, setMessage }) {
   const [slotNo, setSlotNo] = useState("");
